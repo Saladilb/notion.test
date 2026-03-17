@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: ${APP_DATASOURCE_URL:jdbc:postgresql://localhost:5432/product_purchase}
+    username: ${APP_DATASOURCE_USERNAME:postgres}
+    password: ${APP_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
