@@ -1,6 +1,7 @@
 package ru.testtask.productpurchase.catalog.bootstrap;
 
 import java.math.BigDecimal;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -12,15 +13,11 @@ import ru.testtask.productpurchase.catalog.repository.CouponRepository;
 import ru.testtask.productpurchase.catalog.repository.ProductRepository;
 
 @Component
+@RequiredArgsConstructor
 public class CatalogDataInitializer implements ApplicationRunner {
 
     private final ProductRepository productRepository;
     private final CouponRepository couponRepository;
-
-    public CatalogDataInitializer(ProductRepository productRepository, CouponRepository couponRepository) {
-        this.productRepository = productRepository;
-        this.couponRepository = couponRepository;
-    }
 
     @Override
     @Transactional
@@ -53,4 +50,3 @@ public class CatalogDataInitializer implements ApplicationRunner {
         }
     }
 }
-

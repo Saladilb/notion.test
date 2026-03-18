@@ -1,5 +1,6 @@
 package ru.testtask.productpurchase.purchase;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.testtask.productpurchase.payment.PaymentGateway;
 import ru.testtask.productpurchase.payment.PaymentGatewayRegistry;
@@ -8,15 +9,11 @@ import ru.testtask.productpurchase.pricing.PricingCommand;
 import ru.testtask.productpurchase.pricing.PricingService;
 
 @Service
+@RequiredArgsConstructor
 public class PurchaseService {
 
     private final PricingService pricingService;
     private final PaymentGatewayRegistry paymentGatewayRegistry;
-
-    public PurchaseService(PricingService pricingService, PaymentGatewayRegistry paymentGatewayRegistry) {
-        this.pricingService = pricingService;
-        this.paymentGatewayRegistry = paymentGatewayRegistry;
-    }
 
     public PurchaseResult purchase(PurchaseCommand command) {
         PriceBreakdown priceBreakdown = pricingService.calculate(

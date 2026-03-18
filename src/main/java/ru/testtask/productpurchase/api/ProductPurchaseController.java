@@ -1,6 +1,7 @@
 package ru.testtask.productpurchase.api;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,15 +17,11 @@ import ru.testtask.productpurchase.purchase.PurchaseResult;
 import ru.testtask.productpurchase.purchase.PurchaseService;
 
 @RestController
+@RequiredArgsConstructor
 public class ProductPurchaseController {
 
     private final PricingService pricingService;
     private final PurchaseService purchaseService;
-
-    public ProductPurchaseController(PricingService pricingService, PurchaseService purchaseService) {
-        this.pricingService = pricingService;
-        this.purchaseService = purchaseService;
-    }
 
     @PostMapping("/calculate-price")
     public CalculatePriceResponse calculatePrice(@Valid @RequestBody CalculatePriceRequest request) {
@@ -49,4 +46,3 @@ public class ProductPurchaseController {
         return PurchaseResponse.from(result);
     }
 }
-

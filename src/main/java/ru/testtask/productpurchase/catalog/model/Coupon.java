@@ -7,9 +7,14 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "coupons")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Coupon {
 
     @Id
@@ -25,30 +30,10 @@ public class Coupon {
     @Column(name = "discount_value", nullable = false, precision = 10, scale = 2)
     private BigDecimal discountValue;
 
-    protected Coupon() {
-    }
-
     public Coupon(Long id, String code, CouponType type, BigDecimal discountValue) {
         this.id = id;
         this.code = code;
         this.type = type;
         this.discountValue = discountValue;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public CouponType getType() {
-        return type;
-    }
-
-    public BigDecimal getDiscountValue() {
-        return discountValue;
-    }
 }
-
