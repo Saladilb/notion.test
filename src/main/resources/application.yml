@@ -12,13 +12,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
     open-in-view: false
+  sql:
+    init:
+      mode: always
   jackson:
     default-property-inclusion: non_null
 
 server:
   port: 8337
-
